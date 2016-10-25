@@ -1,0 +1,128 @@
+<!-- 待处理：
+火狐盒模型不一致
+css精灵的制作
+icon仍然没解决
+输入框和按钮在ie没问题，火狐下有点不一致-->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <style type="text/css">
+        * {
+            margin: 0;                                                                   /*这样之后就容易*/
+            padding: 0;
+            border: 0;
+            box-sizing: content-box;                        /*  ？？为何火狐下盒模型不一致，那么先统一*/
+        }
+        
+        #header {
+            text-align: right;                           /*li-line-block之后对外相当于inline元素，可以直接align*/
+            margin: 10px;
+        }
+
+        li {
+            display: inline-block;                                 /*  要居右，所以不用浮动*/
+            margin-left: 10px;
+            font-size: 14px;
+        }
+
+        #header a{
+            color: black;
+            font-weight: 700;               /*  bold      */    
+        }
+
+        #header .normal {                   /*  仅仅normal优先级比上一个小，所以加上header，小心覆盖    */     
+            font-weight: normal;            /*  400*/
+        }
+
+        #header li:last-child {              /*li:last-child，是其父元素最后一个li的那个li*/
+            background-color: #3385ff;
+        }
+
+        #header .more {                                        /*header是为了增加more的权重*/
+            color: white;
+            text-decoration: none;                    /* a默认有下划线*/
+            display: block;                            /* a变成块了，但它仍然是li的子元素这点不会改变*/
+            margin: 3px 6px;                           /*  a变成块后可以margin*/
+        }
+       
+
+        #header .more:hover {
+            text-decoration: underline;
+        }
+
+        img {
+            display: block;                         /* 让图片居中则block*/
+            margin: 20px auto;
+        }
+        
+        #main div {
+            margin: 0 auto;
+            width: 500px;
+        }
+
+        [type="text"] {                                                      /*   属性选择器的用法*/
+            border: 1px solid #ccc;
+            width: 400px;
+            height: 30px;                                       /*   400+2+96+2=500，小心盒模型和空格问题*/
+        }
+
+        [type="button"] {
+            color: white;
+            width: 96px;
+            height: 30px;
+            border: 1px solid #3385FF;
+            background-color: #3385FF;
+        }
+
+        #footer {
+            margin: 250px 0 30px;              /* 这种没有width则默认占据全部，也没必要设置width*/
+        }
+
+        #footer ul {
+            width: 300px;
+            margin: 10px auto;                 /*居中一定要有width     */ 
+        }
+
+        p {    /* 不重要的图片用背景引入，小图标搞到一起用css精灵*/
+            background: rgba(0, 0, 0, 0) url("pics/icons_3bfb8e45.png") no-repeat scroll -274px -92px;
+            margin: 0 auto;
+            width: 338px;   
+        }
+  
+    </style>
+</head>
+<body>
+    <ul id="header">                                                            <!--  分三部分 -->
+        <li><a href="#">新闻</a></li>                            <!--   多项则ul,li，浮动或者inline-block -->
+        <li><a href="#">hao123</a></li>
+        <li><a href="#">地图</a></li>
+        <li><a href="#">视频</a></li>
+        <li><a href="#">贴吧</a></li>
+        <li><a href="#" class="normal">登录</a></li>
+        <li><a href="#" class="normal">设置</a></li>
+        <li><a href="#" class="more">更多产品</a></li>
+    </ul>
+    
+    <div id="main">
+        <img src="pics/bd_logo1.png" alt="百度一下" />                 <!-- 图片alt -->
+
+        <div>  
+            <input type="text" /><input type="button" value="百度一下" />           <!-- 空格也占空间！！ -->
+        </div>
+    </div>
+
+    <div id="footer">
+        <ul>
+            <li><a href="#">把百度设为主页</a></li>
+            <li><a href="#">关于百度</a></li>
+            <li><a href="#">About Baidu</a></li>
+        </ul>
+        <p>&copy;2015 Baidu<a href="#">使用百度必读</a>京ICP证030173号</p>          <!-- 版权&copy; -->
+                                                             <!--     p{2015 Baidu}>a+{使用百度必读}先>后+ -->
+    </div>
+   
+
+</body>
+</html>
