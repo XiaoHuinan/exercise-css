@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Live</title>
+
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+            border: 0;
+            box-sizing: content-box;
+        }
+
+        body {
+            font-size: 14px;
+            background: #333344 url("images/background.gif") repeat-x 0 0;       /* 背景颜色可设，并不透明*/
+        }
+        #wrapper {
+            width: 80%;
+            margin: 10px auto 40px;
+        }
+        
+        h1 {
+  
+            background: #333344 url("images/bassist.gif") no-repeat right bottom;      /* img和bgc-img之间用背景色链接*/
+           /*bgc-img大小，位置受限与元素*/
+           /*background-position: ;*/
+        }
+       ul {
+        list-style: none;
+       }
+       #nav {
+          
+            padding: 0 10%;     
+            background: transparent url("images/navbar.gif") repeat-x  0 0;
+            font-size: 0;             /*    li之间空格占空间，设ul0,lifont-size*/
+        }
+         li {
+            display: inline-block;
+         }
+        #nav li {
+           
+            border-left: 1px solid #ccc; 
+            width: 15%;          
+        }
+
+        #nav li:last-child {
+            border-right: 1px solid #ccc;  /*  li都左边框，最后一个有边框*/
+        }
+
+
+        a {
+            text-decoration: none;
+            display: inline-block;      /*  若父元素仅有a，则b或者i-b都可以，若p有其他，ze不一样*/
+        }
+
+        #nav a {
+            color: white;
+            text-align: center; 
+            padding: 5px 0;
+            font-size: 14px;                /*字体在a中设置，li中的是继承*/
+            width: 100%;
+        }
+        a:hover {
+            background-color: #FFBB55;           /*覆盖到a的paddig，所以a不用margin*/
+            color: #111;
+        }
+        
+
+        #main {
+            background-color: #EEDDCC;
+            padding: 55px;
+        }
+
+        h2 {
+            font-weight: normal;
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+
+        #main a {
+            background-color: #FFBB55;
+        }
+
+        #main a:hover {
+            color: green;
+        }
+        
+        table {
+            text-align: center;
+            width: 50%;   
+            margin-bottom: 20px;
+        }
+
+        td {
+            width: 25%;             /*相对于父元素tr,td可设置宽*/
+            height: 40px;
+        }
+        thead {
+            color: white;
+            background-color: #445555;
+            font-weight: bold;
+        }
+        tbody tr:nth-child(2n) {                          /* 偶数*/
+            background-color: #EECC88;
+        }
+        tbody tr:nth-child(2n-1) {                               /*奇数*/
+            background-color: #EEBB66;
+        }
+
+        tbody tr:hover {
+            background-color: #CCBBAA;               /*      直接用css就可以了*/
+        }
+
+        span {
+            margin-right: 10px;
+        }
+
+
+
+    </style>
+
+
+    <script type="text/javascript">
+        window.onload = function() {
+            var arr = document.getElementsByTagName("abbr");
+            var oAbbr = document.getElementById("abbr");
+            for (var i = 0; i < arr.length; i++) {              // 不重要的内容创建后再插入
+                var oSpan = document.createElement("span");
+                var oText = document.createTextNode(arr[i].title);
+                oSpan.appendChild(oText);
+                oAbbr.appendChild(oSpan);
+            }
+            document.getElementById("main").appendChild("oAbbr");
+        };
+
+    </script>
+</head>
+<body>
+    <div id="wrapper">
+        <h1><img src="images/logo.gif" alt="logo" /></h1>  <!--  图片重要img,图设wh，不重要bgc，前提是容易有wh -->
+          <ul id="nav">                                         <!-- text-indent对imng也会有效 -->
+            <li><a href="Home.html">Home</a></li>
+            <li><a href="About.html">About</a></li>
+            <li><a href="Photos.html">Photos</a></li>
+            <li><a href="Live.html">Live</a></li>
+            <li><a href="Contact.html">Contact</a></li>
+        </ul>
+        <div id="main">
+            <h2>Tour dates</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <td>Date</td>
+                        <td>City</td>
+                        <td>Venue</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>June 9th</td>
+                        <td><abbr title="OROregon1">Portland, OR</abbr></td>  <!--  有的有下划线，有的没有 -->
+                        <td>Crystal Ballroom</td>
+                    </tr>
+                    <tr>
+                        <td>June 9th</td>
+                        <td><abbr title="OROregon2">Portland, OR</abbr></td>
+                        <td>Crystal Ballroom</td>
+                    </tr>
+                    <tr>
+                        <td>June 9th</td> 
+                        <td><abbr title="OROregon3">Portland, OR</abbr></td>
+                        <td>Crystal Ballroom</td>
+                    </tr>
+                    <tr>
+                        <td>June 9th</td>
+                        <td><abbr title="OROregon4">Portland, OR</abbr></td>
+                        <td>Crystal Ballroom</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div id="abbr"></div>
+        </div>
+    </div>
+
+</body>
+</html>

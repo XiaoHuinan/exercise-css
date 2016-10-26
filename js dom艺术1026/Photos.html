@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<!-- background-position有疑问 -->
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Photos</title>
+
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+            border: 0;
+            box-sizing: content-box;
+        }
+
+        body {
+            font-size: 14px;
+            background: #333344 url("images/background.gif") repeat-x 0 0;       /* 背景颜色可设，并不透明*/
+        }
+        #wrapper {
+            width: 80%;
+            margin: 10px auto 40px;
+        }
+        
+        h1 {
+  
+  /*   ！！*/ background: #333344 url("images/basshead.gif") no-repeat right bottom;      /* img和bgc-img之间用背景色链接*/
+           /*bgc-img大小，位置受限与元素*/
+           /*background-position: ;*/
+        }
+       ul {
+        list-style: none;
+       }
+       #nav {
+          
+            padding: 0 10%;     
+            background: transparent url("images/navbar.gif") repeat-x  0 0;
+            font-size: 0;             /*    li之间空格占空间，设ul0,lifont-size*/
+        }
+         li {
+            display: inline-block;
+         }
+        #nav li {
+           
+            border-left: 1px solid #ccc; 
+            width: 15%;          
+        }
+
+        #nav li:last-child {
+            border-right: 1px solid #ccc;  /*  li都左边框，最后一个有边框*/
+        }
+
+
+        a {
+            text-decoration: none;
+            display: inline-block;      /*  若父元素仅有a，则b或者i-b都可以，若p有其他，ze不一样*/
+        }
+
+        #nav a {
+            color: white;
+            text-align: center; 
+            padding: 5px 0;
+            font-size: 14px;                /*字体在a中设置，li中的是继承*/
+            width: 100%;
+        }
+        a:hover {
+            background-color: #FFBB55;           /*覆盖到a的paddig，所以a不用margin*/
+            color: #111;
+        }
+        
+
+        #main {
+            background-color: #EEDDCC;
+            padding: 55px;
+        }
+
+        h2 {
+            font-weight: normal;
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+
+        #main a {
+            background-color: #FFBB55;
+        }
+
+        #main a:hover {
+            color: green;
+        }
+
+        #main div img {
+            border: 1px solid black;
+        }
+
+
+    </style>
+
+    <script type="text/javascript">
+    window.onload = function() {              //  我写的是硬编码，没有抽象画，不通用                 
+        var images = document.getElementsByTagName("ul")[1].getElementsByTagName("img");
+        for (var i = 0; i < images.length; i++) {
+            images[i].onclick = function() {
+                var oImg = document.getElementById("placeholder");
+                var oMesg = document.getElementsByTagName("span")[0];
+                if (this.src.indexOf("bassist") != -1) {          // 查找文件名，src改成对应的
+                    oImg.src = "images/photos/bassist.jpg"; 
+                    oMesg.innerHTML = "The crowd goes wild";                // 说明
+                } else if (this.src.indexOf("concert") !=-1)  {
+                    oImg.src = "images/photos/concert.jpg"; 
+                    oMesg.innerHTML = "An atmospheric moment";
+                } else if (this.src.indexOf("crowd") != -1) {
+                    oImg.src = "images/photos/crowd.jpg";
+                    oMesg.innerHTML = "Rocking out"; 
+                } else if (this.src.indexOf("guitarist") != -1) {
+                    oImg.src = "images/photos/guitarist.jpg"; 
+                    oMesg.innerHTML = "Encore! Encore!";
+                } 
+            }
+        }
+    };
+
+    </script>
+</head>
+<body>
+    <div id="wrapper">
+        <h1><img src="images/logo.gif" alt="logo" /></h1>  <!--  图片重要img,图设wh，不重要bgc，前提是容易有wh -->
+          <ul id="nav">          <!-- text-indent对imng也会有效 -->
+            <li><a href="Home.html">Home</a></li>
+            <li><a href="About.html">About</a></li>
+            <li><a href="Photos.html">Photos</a></li>
+            <li><a href="Live.html">Live</a></li>
+            <li><a href="Contact.html">Contact</a></li>
+        </ul>
+        <div id="main">
+            <h2>Photos of the band</h2>
+            <ul>
+                <li><img src="images/photos/thumbnail_bassist.jpg" alt="" /></li>
+                <li><img src="images/photos/thumbnail_concert.jpg" alt="" /></li>
+                <li><img src="images/photos/thumbnail_crowd.jpg" alt="" /></li>
+                <li><img src="images/photos/thumbnail_guitarist.jpg" alt="" /></li>
+            </ul>
+            <span>Choose an image</span>
+            <div><img src="images/placeholder.gif" alt="" id="placeholder"/></div>
+        </div>
+    </div>
+
+</body>
+</html>

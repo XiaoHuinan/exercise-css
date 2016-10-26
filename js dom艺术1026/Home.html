@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Home</title>
+
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+            border: 0;
+            box-sizing: content-box;
+        }
+
+        body {
+            font-size: 14px;
+            background: #333344 url("images/background.gif") repeat-x 0 0;       /* 背景颜色可设，并不透明*/
+        }
+        #wrapper {
+            width: 80%;
+            margin: 10px auto 40px;
+        }
+        
+        h1 {
+  
+           background: #333344 url("images/guitarist.gif") no-repeat right bottom;      /* img和bgc-img之间用背景色链接*/
+           /*bgc-img大小，位置受限与元素*/
+           /*background-position: ;*/
+        }
+
+        #nav {
+            list-style: none;
+            padding: 0 10%;     
+            background: transparent url("images/navbar.gif") repeat-x  0 0;
+            font-size: 0;             /*    li之间空格占空间，设ul0,lifont-size*/
+        }
+
+        ul {
+        list-style: none;
+       }
+       #nav {
+          
+            padding: 0 10%;     
+            background: transparent url("images/navbar.gif") repeat-x  0 0;
+            font-size: 0;             /*    li之间空格占空间，设ul0,lifont-size*/
+        }
+         li {
+            display: inline-block;
+         }
+        #nav li {
+           
+            border-left: 1px solid #ccc; 
+            width: 15%;          
+        }
+
+        a {
+            text-decoration: none;
+            display: inline-block;      /*  若父元素仅有a，则b或者i-b都可以，若p有其他，ze不一样*/
+        }
+
+        #nav a {
+            color: white;
+            text-align: center; 
+            padding: 5px 0;
+            font-size: 14px;                /*字体在a中设置，li中的是继承*/
+            width: 100%;
+        }
+
+        a:hover {
+            background-color: #FFBB55;           /*覆盖到a的paddig，所以a不用margin*/
+            color: #111;
+        }
+        
+
+        #main {
+            background-color: #EEDDCC;
+            padding: 55px;
+        }
+
+        h2 {
+            font-weight: normal;
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+
+        #main a {
+            background-color: #FFBB55;
+        }
+
+        #main a:hover {
+            color: green;
+        }
+
+        [src="images/frame.gif"] {                          /*属性名做选择器*/
+            position: relative;
+            left: 0;
+            top: 0;
+            z-index: 99;                         /*z-index要求是定位元素*/
+        }
+
+        [src="images/slideshow.gif"] {               
+          width: 650px;                                   /*  frame压在他的上边*/
+          height: 150px;
+          left: 0;
+          top: 0;
+          position: absolute;                  
+        }
+
+        #slideshow {
+            height: 150px;             /* 跟frame大小一致*/
+            overflow: hidden;                  /* 图片超出则截取掉*/
+            position: relative;
+            width: 150px;
+            margin-top: 10px;
+        }
+
+    </style>
+
+    <script type="text/javascript">        // 图片不要硬切换，要有过渡感觉
+    window.onload = function() {                       
+        var links = document.getElementsByTagName("a");
+        for (var i = 0; i < links.length; i++) {
+            links[i].onmouseover = function() {
+                var oImg = document.getElementsByTagName("img")[2];
+                if (this.href.indexOf("About") != -1) {                   // 看看路径中的文件名
+                    oImg.style.left = -130 + "px";                         // px
+                } else if (this.href.indexOf("Photos") !=-1)  {              // 改变图片位置来切换
+                    oImg.style.left = -260 + "px"; 
+                } else if (this.href.indexOf("Live") != -1) {
+                    oImg.style.left = -370 + "px"; 
+                } else if (this.href.indexOf("Contact") != -1) {
+                    oImg.style.left = -500 + "px"; 
+                } else {
+                    oImg.style.left = 0 + "px"; 
+                }
+            }
+        }
+    };
+
+
+
+    </script>
+</head>
+<body>
+    <div id="wrapper">
+        <h1><img src="images/logo.gif" alt="logo" /></h1>  <!--  图片重要img,图设wh，不重要bgc，前提是容易有wh -->
+        <ul id="nav">                                             <!-- text-indent对imng也会有效 -->
+            <li><a href="Home.html">Home</a></li>
+            <li><a href="About.html">About</a></li>
+            <li><a href="Photos.html">Photos</a></li>
+            <li><a href="Live.html">Live</a></li>
+            <li><a href="Contact.html">Contact</a></li>
+        </ul>
+        <div id="main">
+            <h2>Welcome</h2>
+            <p>Welcome to the official website of Jay Skript and the Domsters. Here, you can <a href="About.html">learn more about the band</a>, view <a href="Photos.html">photos of the band</a>, find out about <a href="Live.html">tour dates</a> and<a href="Contact.html">get in touch with the band</a>.</p>
+            <div id="slideshow">
+                <img src="images/frame.gif" alt="" />
+                <img src="images/slideshow.gif" />
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
