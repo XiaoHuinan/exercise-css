@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<!-- 
+什么时候用m，p -->
+<head>
+    <meta charset="UTF-8" />
+    <title>播放列表</title>
+
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #outer {
+            border: 1px solid #ccc;
+            color: #6B7980;
+            width: 200px;
+            margin: 10px auto;
+            font-size: 14px;
+        }
+
+        #outer div {
+            border-bottom: 1px solid #ccc;
+            background: #CED3D7 url("ico.gif") no-repeat scroll 185px -13px;
+            padding: 6px;   
+
+        }
+
+        ul {
+            display: none;
+            background-color: #E9EDF2;
+            list-style: none;
+        }
+
+        li {
+            padding: 6px 0 0 6px;   /*1*/
+
+        }
+
+        li:last-child {
+            padding-bottom: 6px;      /*li的加边框后者内编剧的方法*/
+        }
+
+        li:hover {
+            background-color: #fff;
+        }
+
+
+        a {
+            text-decoration: none;
+            color: #6B7980;                  /* ？？继承小于默认*/
+        }                                     /*为何不为继承*/
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+    </style>
+
+    <script type="text/javascript">
+        window.onload = function() {
+            var oDiv = document.getElementById("outer").getElementsByTagName("div")[0];
+
+            var oUl = document.getElementsByTagName("ul")[0];
+            var flag = false;         // 双击判断的标志
+
+            oDiv.onclick = function() {
+                if (!flag) {
+                    oUl.style.display = "block";
+                    flag = !flag;
+                    oDiv.style.backgroundPosition = "185px 15px";
+                } else {
+                    oUl.style.display = "none";
+                    flag = !flag;
+                    oDiv.style.backgroundPosition = "185px -13px"
+                }         // 改变背景图的定位
+            };
+    };
+
+    </script>
+</head>
+<body>
+    <div id="outer">
+        <div>播放列表...</div>
+        <ul>
+            <li><a href="#">1玩家之徒 - 蔡依林</a></li>
+            <li><a href="#">2玩家之徒 - 蔡依林</a></li>
+            <li><a href="#">3玩家之徒 - 蔡依林</a></li>
+            <li><a href="#">4玩家之徒 - 蔡依林</a></li>
+            <li><a href="#">5玩家之徒 - 蔡依林</a></li>
+            <li><a href="#">6玩家之徒 - 蔡依林</a></li>
+        </ul>
+    </div>
+</body>
+</html>

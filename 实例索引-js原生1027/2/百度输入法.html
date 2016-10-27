@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>百度输入法</title>
+
+    <style type="text/css">
+        #outer {
+            width: 80px;
+            margin: 10px auto;
+            font-size: 12px;
+        }
+
+        ul {
+            list-style: none;
+            margin-top: 5px;
+            border: 1px solid blue;
+            color: blue;
+            padding: 0;              /*浏览器默认的麻烦*/
+            visibility: hidden;
+        }
+
+        li {
+            padding: 10px 0 10px 5px;
+        }
+
+        #close {
+            border-top: 1px solid blue;
+        }
+    </style>
+
+    <script type="text/javascript">
+        window.onload = function() {
+            var oUl = document.getElementsByTagName("ul")[0];      //!!
+            var oBtn = document.getElementsByTagName("input")[0];
+            var oClose = document.getElementById("close");
+            var flag = false;
+            // 谁是按钮，改变你的是谁要够清楚
+            oBtn.onclick = function() {
+                if (!flag) {                // 标志位
+                    oUl.style.visibility = "visible";
+                    flag = !flag;
+                } else {
+                    oUl.style.visibility = "hidden";
+                    flag = !flag;
+                }
+            }
+
+            oClose.onclick = function() {
+                oUl.style.visibility = "hidden";
+                flag = false;
+            }
+
+
+        }
+    </script>
+</head>
+<body>
+    <div id="outer">
+        <input type="button" value="输入法" />
+        <ul>
+            <li>手写</li>
+            <li>拼音</li>
+            <li id="close">关闭</li>
+        </ul>
+    </div>
+</body>
+</html>

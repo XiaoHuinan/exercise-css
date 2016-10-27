@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>复选框</title>
+
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-size: 12px;
+            background-color: #111;
+        }
+
+        #outer {
+            width: 100px;
+            border: 1px solid;
+            border-radius: 5px;
+            background-color: #fff;
+            padding: 10px;
+            margin: 10px auto;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        #all {
+            border-bottom: 1px solid;
+            padding-bottom: 10px;
+        }
+
+        input {
+            margin-right: 10px;
+        }
+
+        li {
+            margin-top: 10px;
+        }
+
+        span {
+            color: blue;
+            margin-left: 5px;
+        }
+        p {
+            width: 331px;
+            margin: 10px auto;
+            color: white;
+        }
+        span:hover {
+            color: red;
+        }
+    </style>
+
+    <script type="text/javascript">
+        window.onload = function() {
+            var oYes = document.getElementById("all").getElementsByTagName("input")[0];
+            var oLabel = document.getElementById("all").getElementsByTagName("label")[0];
+            var oNo = document.getElementsByTagName("span")[0];
+            var oItems = document.getElementsByTagName("input");
+           // var flag = false;         // 双击+for2个经典
+
+            oYes.onclick = function() {
+                if (this.checked) {
+                    for (var i = 1; i < oItems.length; i++) {
+                        oItems[i].checked = "checked"; //！！
+                    };
+                    oLabel.innerHTML = "全不选";
+                } else {
+                   for (var i = 1; i < oItems.length; i++) {
+                        oItems[i].checked = "";
+                    };
+                    oLabel.innerHTML = "全选";
+                }
+            };
+
+            // oNo.onclick = function() {
+            //       if (!flag) {
+            //         for (var i = 0; i < oItems.length; i++) {
+            //             oItems[i].checked = "checked"; //！！
+            //         };
+            //         oLabel.innerHTML = "全不选";
+            //         flag = !flag;
+            //     } else {
+            //        for (var i = 0; i < oItems.length; i++) {
+            //             oItems[i].checked = "";
+            //         };
+            //         oLabel.innerHTML = "全选";
+            //         flag = !flag;
+            //     }
+            // };
+
+            //     for (var i = 0; i < oItems.length; i++) {
+            //         if (oItems[i].checked === "checked") {
+            //             oItems[i].checked = ""; 
+            //         } else {
+            //             oItems[i].checked = "checked";
+            //         }
+            //     }
+            // };  
+        };
+
+
+            
+
+     
+    </script>
+</head>
+<body>
+    <div id="outer">
+        <ul>
+            <li id="all"><input type="checkbox" name="" id="" /><label for="">全选</label><span>反选</span></li>
+            <li><label for=""><input type="checkbox" name="" id="" />选项 (1)</label></li>
+            <li><label for=""><input type="checkbox" name="" id="" />选项 (2)</label></li>
+            <li><label for=""><input type="checkbox" name="" id="" />选项 (3)</label></li>
+            <li><label for=""><input type="checkbox" name="" id="" />选项 (4)</label></li>
+            <li><label for=""><input type="checkbox" name="" id="" />选项 (5)</label></li>
+            <li><label for=""><input type="checkbox" name="" id="" />选项 (6)</label></li>
+            <li><label for=""><input type="checkbox" name="" id="" />选项 (7)</label></li>
+            <li><label for=""><input type="checkbox" name="" id="" />选项 (8)</label></li>
+            <li><label for=""><input type="checkbox" name="" id="" />选项 (9)</label></li>
+            <li><label for=""><input type="checkbox" name="" id="" />选项 (10)</label></li>
+        </ul>
+    </div>
+    <p>1、切换全选/全不选文字；2、根据选中个数更新全选框状态；</p>
+    
+</body>
+</html>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!-- 单位百分比不是很熟悉 -->
+<!-- 网页换肤其实就是改变link的href指向不同的css -->
+<!-- 为何padding不可以居中的 -->
+    <meta charset="UTF-8" />
+    <title>网页换肤</title>
+    <style type="text/css">
+
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            background-color: grey;
+        }
+        #wrapper {
+            width: 430px;
+            margin: 10px auto 0;
+        }
+
+        .big {
+            width: 16px;
+            height: 16px;
+            display: inline-block;      /*span行内非替换不可以设w,h*/
+            position: relative;
+        }
+
+     
+        .small {
+            display: none;                    /* 点击则改变dispklay*/
+            width: 6px;
+            height: 6px;
+            background-color: #fff;
+            position: absolute;
+            left: 50%;                            /*div内部一个div，负外边距的绝对定位*/
+            top: 50%; 
+            margin: -3px 0 0 -3px;                                               /* 一定要是偏移方向*/
+        }
+
+        .red {
+            background-color: red;
+        }
+
+        .green {
+            background-color: green;
+        }
+
+        .black {
+            background-color: black;
+        }
+
+
+        ul {
+            list-style: none;
+            border: 1px solid  #fff;
+            background-color: green;
+            font-size: 0;
+            margin: 15px 0;
+          /*  width: 100%;  */                  /*100%则ul的w等于父元素的w，不谢w则ul实际宽度占满父元素的w*/
+        }
+
+        li {
+            display: inline-block;
+            padding: 5px 0;                             
+            border-right: 1px solid  #fff;
+            width: 16.4%;         /*  !一个ul的长度除以几个li，m,p都为0!*/
+            text-align: center;
+        }
+
+        li:last-child {
+            border-right: none;                           /* ulborder然后li全部都右border最后的一个除去，*/
+        }
+
+        a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+
+    <script type="text/javascript">
+        window.onload = function() {
+            var oSmall = document.getElementsByClassName("small");
+            var oBig = document.getElementsByClassName("big");
+            var oUl = document.getElementsByTagName("ul")[0];
+
+            for (var i = 0; i < oBig.length; i++) {
+                oBig[i].index = i;                                                            // oBig[i]
+                oBig[i].onclick = function() {
+                    oUl.style.backgroundColor = this.className.slice(4);                // slice截取出颜色名字
+                    for (var j = 0; j < oSmall.length; j++) {                           //  先将全部隐藏，再显示特定
+                        oSmall[j].style.display = "none";
+                    }                                                        // 脚本不能动一般是无线循环
+                    oSmall[this.index].style.display = "block";        // []里边是等点击的时候才赋值的，所以不可以用i
+                };
+            }
+        };
+
+    </script>
+</head>
+<body>
+    <div id="wrapper">
+        <span class="big red"><span class="small"></span></span>
+        <span class="big green"><span class="small"></span></span>
+        <span class="big black"><span class="small"></span></span>
+        <ul>
+            <li><a href="#">新闻</a></li>
+            <li><a href="#">娱乐</a></li>
+            <li><a href="#">体育</a></li>
+            <li><a href="#">电影</a></li>
+            <li><a href="#">音乐</a></li>
+            <li><a href="#">旅游</a></li>
+        </ul>
+    </div>
+</body>
+</html>

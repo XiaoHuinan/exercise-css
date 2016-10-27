@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>图片列表</title>
+
+    <style type="text/css">
+
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #outer {
+            border: 1px solid  #ccc;
+            width: 700px;
+            margin: 10px auto;
+        }
+
+        ul {
+            width: 670px;
+            margin: 10px auto;
+        }
+
+        li {
+            display: inline-block;
+        }
+
+        img {
+            border: 1px solid #ccc;
+            opacity: 0.2;
+        }
+    </style>
+
+    <script type="text/javascript">
+        window.onload = function() {
+            var imgs = document.getElementsByTagName("img");
+
+            for (var i = 0; i < imgs.length; i++) {
+                imgs[i].onmouseover = function() {
+                    this.style.opacity = 1;
+                };
+
+                imgs[i].onmouseout = function() {
+                    this.style.opacity = 0.2;
+                };
+            }
+        };
+
+    </script>
+</head>
+<body>
+    <div id="outer">
+        <ul>
+            <li><img src="images/img1.jpg" alt="" /></li>
+            <li><img src="images/img2.jpg" alt="" /></li>
+            <li><img src="images/img3.jpg" alt="" /></li>
+            <li><img src="images/img4.jpg" alt="" /></li>
+            <li><img src="images/img5.jpg" alt="" /></li>
+            <li><img src="images/img6.jpg" alt="" /></li>
+            <li><img src="images/img7.jpg" alt="" /></li>
+            <li><img src="images/img8.jpg" alt="" /></li>
+            <li><img src="images/img9.jpg" alt="" /></li>
+            <li><img src="images/img10.jpg" alt="" /></li>
+        </ul>
+    </div>
+</body>
+</html>

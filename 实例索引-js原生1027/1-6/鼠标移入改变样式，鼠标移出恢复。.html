@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>鼠标移入移除改变样式</title>
+
+<!-- 
+没有必要两个div
+添加hover类就可以了 -->
+    <style type="text/css">
+        #big {
+            background-color: #111;
+         /*   padding: 4px;*/                       /* 为什么这种pading居中没有效果*/
+            width: 120px;
+            height: 120px;
+            margin: 10px auto;
+            position: relative;
+            cursor: crosshair;   
+        }
+
+        #small {
+            background-color: #111;
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            margin: -50px 0 0 -50px;
+            color: white;
+        }
+    </style>
+
+    <script type="text/javascript">
+        window.onload = function() {
+            var oBig = document.getElementById("big");
+            var oSmall = document.getElementById("small");
+
+            oBig.onmouseover = function() {
+                oBig.style.backgroundColor = "red";
+                oSmall.style.backgroundColor = "white";
+                oSmall.style.color = "black";
+            }
+
+            oBig.onmouseout = function() {
+                oBig.style.backgroundColor = "black";
+                oSmall.style.backgroundColor = "black";
+                oSmall.style.color = "white";
+            }
+        }
+    </script>
+</head>
+<body>
+    <div id="big">
+        <div id="small">鼠标移入改变样式，鼠标移出恢复。</div>
+    </div>
+</body>
+</html>

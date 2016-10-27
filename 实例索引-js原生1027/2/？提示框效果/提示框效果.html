@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>提示框效果</title>
+
+
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #outer {
+            width: 475px;
+            margin: 10px auto;
+            padding: 10px;
+            border: 1px solid;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+
+        ul {
+            width: 100%;
+            list-style: none;
+        }
+
+        li {
+            display: inline-block;
+            border: 1px solid  #111;
+            background-color: #F0F0F0;
+            width: 75px;
+            height: 75px;
+            padding: 7px;
+            position: relative;
+        }
+
+        span {
+            margin: 0 15px 0 0;
+            font-weight: bold;
+        }
+
+        img {
+            display: none;
+            position: absolute;       /*！！rela*/
+            left: -15px;
+            top: -15px;
+            width: 115px;
+            height:115px;
+                 /*  !!*/
+            border: 1px solid;
+        }
+
+        .current {
+            display: block;
+                 z-index: 999;  
+        }
+
+    </style>
+
+    <script type="text/javascript">
+        window.onload = function() {
+            var oImg = document.getElementsByTagName("img");
+            var oDiv = document.getElementById("outer").getElementsByTagName("div");
+
+            for (var i = 0; i < oDiv.length; i++) {
+                oDiv[i].index = i;
+                oDiv[i].onmouseover = function() {
+                    for (var j = 0; j < oImg.length; j++) {
+                        oImg[j].className = "";
+                    }
+
+                    oImg[this.index].className = "current";
+                };
+
+                oDiv[i].onmouseout = function() {       //!!
+                    for (var j = 0; j < oImg.length; j++) {
+                        oImg[j].className = "";
+                    }
+                };
+            }
+        };
+
+    </script>
+</head>
+<body>
+    <div id="outer">
+        <h2>名车车标展示-鼠标移过显示车标</h2>
+            <ul>
+                <li>
+                    <div><span>001</span> XXX</div>
+                    <img src="images/img1.jpg" alt="" />
+                </li>
+                <li>
+                    <div><span>002</span> XXX</div>
+                    <img src="images/img2.jpg" alt="" />
+                </li>
+                <li>
+                    <div><span>003</span> XXX</div>
+                    <img src="images/img3.jpg" alt="" />
+                </li>
+                <li>
+                    <div><span>004</span> XXX</div>
+                    <img src="images/img4.jpg" alt="" />
+                </li>
+                <li>
+                    <div><span>005</span> XXX</div>
+                    <img src="images/img5.jpg" alt="" />
+                </li>
+                <li>
+                    <div><span>006</span> XXX</div>
+                    <img src="images/img6.jpg" alt="" />
+                </li>
+                <li>
+                    <div><span>007</span> XXX</div>
+                    <img src="images/img7.jpg" alt="" />
+                </li>
+                <li>
+                    <div><span>008</span> XXX</div>
+                    <img src="images/img8.jpg" alt="" />
+                </li>
+                <li>
+                    <div><span>009</span> XXX</div>
+                    <img src="images/img9.jpg" alt="" />
+                </li>
+                <li>
+                    <div><span>010</span> XXX</div>
+                    <img src="images/img10.jpg" alt="" />
+                </li>
+            </ul>
+    </div>
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>函数传参，改变div属性</title>
+    <style type="text/css">
+        #outer {
+            width: 210px;
+            margin: 10px auto;
+        }
+
+        label {
+            margin: 15px 0;
+            display: block;          /*label,span,strong这些要设置宽高，上下内外边距的话*/
+        }
+
+        input {
+            margin-left: 5px;
+        }
+
+        #btn {
+            width: 120px;
+            margin: 5px auto;
+        }
+
+        #myDiv {
+            background-color: #111;
+            padding: 15px;
+            color: #fff;
+            font-size: 12px;
+            width: 180px;
+            height: 180px;
+
+        }
+    </style>
+
+
+
+    <script type="text/javascript">
+        window.onload = function() {
+            var oConfirm = document.getElementById("confirm");
+            var oReset = document.getElementById("reset");
+            var oDiv = document.getElementById("myDiv");
+            oConfirm.onclick = function() {
+                var attr = document.getElementById("attr").value;
+                var val = document.getElementById("val").value;   // 每次点击可能都改变所以
+
+                oDiv.style[attr] = val;     // 点记法用于属性名，变量或者表达式用【】
+            };
+
+            oReset.onclick = function() {
+                var attr = document.getElementById("attr").value;        //重新获取
+                oDiv.style[attr] = "";    
+            };
+        }
+    </script>
+</head>
+<body>
+    <div id="outer">
+        <label for="">属性名:<input type="text" id="attr" value="background" /></label>
+        <label for="">属性值:<input type="text" id="val" value="blue" /></label>
+        <div id="btn">
+            <input type="button" value="确定" id="confirm" />
+            <input type="button"  value="重置" id="reset" />                    <!--  dn,input:b emmet的缩写 -->
+        </div>
+        <div id="myDiv">在上方输入框输入"属性名"及"属性值"，点击确定按钮查看效果。</div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!-- 正则表达式怎么练习 -->
+    <meta charset="UTF-8" />
+    <title>求出数组中所有数字的和</title>
+<!--     验证数字的哪一步很巧妙
+ -->    <style type="text/css">
+        #outer {
+            width: 550px;
+            margin: 10px auto;
+        }
+
+        #btn {
+            display: block;
+            margin: 15px 0;
+        }
+
+        #sum {
+            color: red;
+            font-size: 40px;
+        }
+    </style>
+    
+    <script type="text/javascript">
+        window.onload = function() {
+            var oNum = document.getElementById("num");
+            var oBtn = document.getElementById("btn");
+            var oSum = document.getElementById("sum");
+            var arr = [];
+            var s = 0;
+
+
+            oNum.onkeyup = function() {
+                this.value = this.value.replace(/[^(\d)|(,)]/, "");
+            };                // !!!!
+
+
+
+            oBtn.onclick = function() {
+                var s = 0;                  // 别忘记每次清零
+                arr = oNum.value.split(",");
+
+                for (var i = 0; i < arr.length; i++) {
+                    s += Number(arr[i]);   //记得转换
+                };
+
+                oSum.innerHTML = s;      // input-value是字符串
+            }
+        }
+    </script>
+</head>
+<body>
+    <div id="outer">
+        <input type="text" value="1,2,5,3,2,3,32,42,2" id="num" />
+        <span>输入数字求和，数字之间用半角","号分隔</span>
+        <input type="button" value="求和" id="btn" />
+        <p id="sum"></p>
+    </div>
+</body>
+</html>

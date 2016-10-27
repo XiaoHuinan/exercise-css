@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>简易选项卡</title>
+    
+    <style type="text/css">
+
+
+        #outer {
+            width: 500px;
+            border: 1px solid  #111;
+            margin: 10px auto;
+            padding: 0;
+        }
+
+        #nav {
+            background-color: #111;
+            margin: 0;
+            padding: 0;
+            color: #fff;
+            list-style: none;   
+            overflow: hidden;            /*    ul里的li浮动后*/
+        }
+
+        #nav li {
+            float: left;
+            padding: 8px 12px;
+        }
+
+        #nav li:hover {
+            background-color: #ccc;
+            color: #111;
+        }
+
+        #outer div {
+            padding: 5px;
+        }
+
+        #outer div ul {
+            display: none;
+        }
+
+        #outer div .show {
+            display: block;
+        }
+
+        .show li {
+            margin-top: 3px;
+        }
+
+
+    </style>
+        
+    <script type="text/javascript">
+        window.onload = function() {
+            var items = document.getElementById("nav").getElementsByTagName("li");
+
+            var ul_mesg = document.getElementById("mesg").getElementsByTagName("ul");
+
+            for (var i = 0; i < items.length; i++) {
+                items[i].index = i;
+                items[i].onmouseover = function() {
+                    for (var j = 0; j < ul_mesg.length; j++) {
+                        ul_mesg[j].className = "";
+                    }
+
+                    ul_mesg[this.index].className = "show";
+                };
+            }
+        };
+
+    </script>
+</head>
+<body>
+    <div id="outer">
+        <ul id="nav">
+            <li>第1课</li>
+            <li>第2课</li>
+            <li>第3课</li>
+        </ul>
+
+        <div id="mesg">
+            <ul class="show">
+                <li>1111</li>
+                <li>1111</li>
+                <li>1111</li>
+                <li>1111</li>
+                <li>1111</li>
+                <li>1111</li>
+            </ul>
+
+            <ul>
+                <li>2222</li>
+                <li>2222</li>
+                <li>2222</li>
+                <li>2222</li>
+                <li>2222</li>
+                <li>2222</li>
+                <li>2222</li>
+                <li>2222</li>
+            </ul>
+
+            <ul>
+                <li>333</li>
+                <li>333</li>
+                <li>333</li>
+                <li>333</li>
+                <li>333</li>
+                <li>333</li>
+                <li>333</li>
+                <li>333</li>
+                <li>333</li>
+                <li>333</li>
+            </ul>
+
+        </div>
+    </div>
+</body>
+</html>

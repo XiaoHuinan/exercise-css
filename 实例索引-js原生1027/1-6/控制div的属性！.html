@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!-- 作者的方法可借鉴 -->
+<!-- 加入className有的无效是因为id的优先级高于class,所以要么去掉id要么直接style.width -->
+<!-- 但是直接sytle的话最后重置就不好搞了 -->
+    <meta charset="UTF-8" />
+    <title>控制div的属性</title>
+
+    <style type="text/css">
+    #btns {
+        width: 270px;                                                      /*大于class-wider*/
+        margin: 20px auto;
+    }
+
+    #myDiv {                                                             /*也小于sytle行内*/
+        width: 100px;
+        height: 100px;
+        background-color: #111;
+        margin: 0 auto;
+    }
+    
+    </style>
+
+    <script type="text/javascript">                                                  //  回调的i要小心
+        // window.onload = function() {
+        //     var btns = document.getElementsByTagName("input");
+        //     var oDiv = document.getElementById("myDiv");
+
+        //     for (var i = 0; i < btns.length; i++) {
+        //         btns[i].onclick = function() {
+        //             if (this.id.indexOf("wider") != -1) {
+        //                  oDiv.style.width = 200 + "px";                                 // 200px
+        //             } else if (this.id.indexOf("heighter") != -1) {
+        //                  oDiv.style.height = 200 + "px";
+        //             } else if (this.id.indexOf("color") != -1) {
+        //                  oDiv.style.backgroundColor = "red";
+        //             } else if (this.id.indexOf("hidden") != -1) {
+        //                 oDiv.style.display = "none";
+        //             } else if (this.id.indexOf("reset") != -1) {
+        //                 oDiv.style.cssText = "";                         // cssText改变style对style
+        //             } 
+        //         }
+        //     };
+        // }
+
+        function changeStyle(elem, attr, value) {
+            elem.style[attr] = value;                   
+        }
+
+        window.onload = function() {
+            var btns = document.getElementsByTagName("input");
+            var oDiv = document.getElementById("myDiv");
+            var oAttr = ["width", "height", "backgroundColor", "display", "display"];
+            var oVal = ["200px", "200px", "red", "none", "block"];
+            console.log(oDiv.style);                               // style行内样式
+
+            for (var i = 0; i < btns.length; i++) {
+                btns[i].index = i;                                     // index是作为每个btn的属性的
+                btns[i].onclick = function() {
+                    if (this.index == oAttr.length - 1) {
+                        oDiv.style.cssText = "";                    //清楚行内样式
+                    } else {
+                        changeStyle(oDiv, oAttr[this.index], oVal[this.index]);
+                    }
+                };
+            }
+        };
+
+    </script>
+</head>
+<body>
+    <div id="btns">
+        <input type="button" value="变宽" id="btn-wider"/>              
+        <input type="button" value="变高" id="btn-heighter"/>
+        <input type="button" value="变色" id="btn-color"/>
+        <input type="button" value="隐藏" id="btn-hidden"/>
+        <input type="button" value="重置" id="btn-reset"/>
+    </div>
+
+    <div id="myDiv"></div>                                     <!--  方框的颜色是bgc,不是color -->
+</body>
+</html>

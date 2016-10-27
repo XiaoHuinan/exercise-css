@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>函数接收参数并传出</title>
+
+    <style type="text/css">
+        div {
+            width: 150px;
+            margin: 10px auto;
+        }
+
+        .txt {
+            width: 95%;
+            margin: 10px 0;
+           /* margin: 10px auto;  */      /* input是行内元素*/
+        }
+
+        .txt:focus {
+            border: 1px solid blue;
+        }
+
+        #btn {
+            width: 40px;
+            margin: 0 auto;          /* btn是行内元素，不可以像div那样margin-0-auto居中*/
+            display: block;
+        }
+
+
+    </style>
+
+    <script type="text/javascript">
+        window.onload = function() {
+            var oBtn = document.getElementById("btn");
+            var oTxt = document.getElementsByClassName("txt");
+            
+            oBtn.onclick = function() {
+                alert(oTxt[0].value);
+                alert(oTxt[1].value);
+            }
+
+        };
+
+
+    </script>
+</head>
+<body>
+    <div>
+        <input type="text" value="北京市" class="txt" />
+        <input type="text" value="朝阳区" class="txt"/>
+        <input type="button" value="传参" id="btn"/>
+    </div>
+</body>
+</html>

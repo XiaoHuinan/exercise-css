@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>用循环将三个div变色</title>
+<!-- 尽量不要使用getbyclassname -->
+    <style type="text/css">
+        #wrapper {
+            width: 250px;
+            margin: 10px auto 0;
+        }
+
+        input {
+            display: block;                          /*input是行内无法像div那样居中*/
+         /*   width: 120px;*/                     /*  input可以在父元素text-algin-center*/
+            margin: 5px auto;                  /*  为何不用w就可以居中了*/
+        }
+
+        .myDiv {
+            width: 80px;
+            height: 80px;
+            display: inline-block;                                              /* inline-blick比float容易控制*/
+            background-color: #111;
+        }
+    </style>
+
+    <script type="text/javascript">
+    window.onload = function() {
+        var oBtn = document.getElementsByTagName("input")[0];
+        var arrDiv = document.getElementsByClassName("myDiv");                //先取得#wrapper再div就不用class
+
+        oBtn.onclick = function() {
+            for (var i = 0; i < arrDiv.length; i++) {
+                arrDiv[i].style.backgroundColor = "red";
+            }
+        };
+    };
+
+    </script>
+</head>
+<body>
+    <div id="wrapper">
+        <input type="button" value="点击将div变成红色" />
+        <div class="myDiv"></div>
+        <div class="myDiv"></div>
+        <div class="myDiv"></div>
+    </div>
+</body>
+</html>
